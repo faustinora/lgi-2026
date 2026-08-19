@@ -1,0 +1,28 @@
+<?php
+require_once 'funcion_database.php';
+$conn = getConnection();
+
+$res = $conn->query('SELECT * FROM estudiantes WHERE activo = 1 ORDER BY apellido');
+?>
+
+<html>
+<html lang="es">
+<body>
+    <h1>Estudiantes</h1>
+    <table border="1">
+    <thead>
+        <tr><th>Nombre</th><th>Apellido</th><th>Email</th></tr>
+    </thead>
+    <tbody>
+    <?php while ($fila = $res->fetch_assoc()):?>
+        <tr>
+            <td><?= htmlspecialchars($fila['nombre']) ?></td>
+            <td><?= htmlspecialchars($fila['apellido']) ?></td>
+            <td><?= htmlspecialchars($fila['email']) ?></td>
+        </tr>
+    <?php endwhile;?>
+    </tbody>
+</table>
+<p>Total: <?= $res->num_rows ?> estudiantes</p>
+</body>
+</html>

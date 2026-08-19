@@ -1,7 +1,7 @@
 <?php
 define('DB_HOST', 'localhost');
 define('DB_USER', 'root');
-define('DB_PASS', 'secreto');
+define('DB_PASS', 'alumno');
 define('DB_NAME', 'sistema_estudiantes');
 
 function getConnection(): mysqli {

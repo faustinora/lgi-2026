@@ -1,0 +1,25 @@
+proyecto base-datos
+# Por favor ingresa el mensaje del commit para tus cambios. Las
+#  líneas que comiencen con '#' serán ignoradas, y un mensaje
+#  vacío aborta el commit.
+#
+# En la rama main
+# Tu rama está adelantada a 'origin/main' por 1 commit.
+#   (usa "git push" para publicar tus commits locales)
+#
+# Cambios a ser confirmados:
+#	nuevos archivos: proyecto/config/database.php
+#	nuevos archivos: proyecto/crear.php
+#	nuevos archivos: proyecto/index.php
+#
+# Cambios no rastreados para el commit:
+#	borrados:        database.php
+#	modificados:     insertar_form.php
+#	borrados:        leerymostrar.php
+#
+# Archivos sin seguimiento:
+#	conexion.php
+#	config.php
+#	funcion_database.php
+#	leerymostrar.html
+#

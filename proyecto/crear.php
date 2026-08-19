@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->bind_param("sss", $nombre, $apellido, $email);
 
         if ($stmt->execute()) {
-            $mensaje = 'Estudiante agregado correctamente. ID: ' . $stmt->insert_id;
+            $mensaje = 'Estudiante agregado correctamente.';
         } else {
             $mensaje = 'Error al agregar estudiante: ' . $stmt->error;
         }
@@ -44,5 +44,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <input type="email" name="email" placeholder="Email">
         <button type="submit">Guardar</button>
     </form>
+    <a href="index.php"> Volver a estudiantes</a>
 </body>
 </html>
