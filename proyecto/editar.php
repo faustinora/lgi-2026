@@ -3,7 +3,6 @@ require_once 'config/database.php';
 $mensaje = '';
 $conn = getConnection();
 
-// 1. OBTENER Y VALIDAR EL ID DESDE LA URL
 $id = $_GET['id'] ?? null;
 
 if (!$id || !is_numeric($id)) {
@@ -11,7 +10,6 @@ if (!$id || !is_numeric($id)) {
     exit;
 }
 
-// 2. PROCESAR LA ACTUALIZACIÓN (Cuando se envía el formulario vía POST)
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nombre   = trim($_POST['nombre'] ?? '');
     $apellido = trim($_POST['apellido'] ?? '');
@@ -22,7 +20,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $mensaje = 'El correo electrónico no es válido.';
     } else {
-        // Actualizar datos en MySQL mediante Sentencia Preparada
         $stmt = $conn->prepare("UPDATE estudiantes SET nombre = ?, apellido = ?, email = ? WHERE id = ?");
         $stmt->bind_param("sssi", $nombre, $apellido, $email, $id);
 
@@ -35,7 +32,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-// 3. CONSULTAR LOS DATOS ACTUALES DEL ESTUDIANTE (Para mostrarlos en los inputs)
 $stmt = $conn->prepare("SELECT * FROM estudiantes WHERE id = ?");
 $stmt->bind_param("i", $id);
 $stmt->execute();
@@ -43,7 +39,6 @@ $resultado = $stmt->get_result();
 $estudiante = $resultado->fetch_assoc();
 $stmt->close();
 
-// Si el ID no existe en la base de datos, redirigir
 if (!$estudiante) {
     header('Location: index.php');
     exit;
@@ -55,42 +50,39 @@ if (!$estudiante) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Estudiante</title>
-
-    <link rel="stylesheet"href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
 </head>
 <body>
-
-<main class="container">
+    <main class="container" style="max-width: 600px; padding-top: 2rem;">
         <article>
             <header>
-                <h2>Editar Estudiante</h2>
+                <h3 style="margin-bottom: 0;">Editar Estudiante</h3>
             </header>
 
             <?php if ($mensaje): ?>
-                <ins><strong><?= htmlspecialchars($mensaje) ?></strong></ins>
-                <br><br>
+                <mark style="display: block; margin-bottom: 1rem; padding: 0.5rem 1rem;"><?php echo htmlspecialchars($mensaje); ?></mark>
             <?php endif; ?>
 
-            <!-- Formulario adaptado a la sintaxis limpia de PicoCSS -->
-            <form action="editar.php?id=<?= $id ?>" method="POST">
-                <label for="nombre">Nombre:
-                    <input type="text" id="nombre" name="nombre" value="<?= htmlspecialchars($estudiante['nombre']) ?>" required>
-                </label>
+            <form action="editar.php?id=<?php echo $id; ?>" method="POST">
+                <div class="grid">
+                    <label for="nombre">Nombre
+                        <input type="text" id="nombre" name="nombre" value="<?php echo htmlspecialchars($estudiante['nombre']); ?>" required>
+                    </label>
 
-                <label for="apellido">Apellido:
-                    <input type="text" id="apellido" name="apellido" value="<?= htmlspecialchars($estudiante['apellido']) ?>" required>
-                </label>
+                    <label for="apellido">Apellido
+                        <input type="text" id="apellido" name="apellido" value="<?php echo htmlspecialchars($estudiante['apellido']); ?>" required>
+                    </label>
+                </div>
 
-                <label for="email">Email:
-                    <input type="email" id="email" name="email" value="<?= htmlspecialchars($estudiante['email']) ?>" required>
+                <label for="email">Correo Electrónico
+                    <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($estudiante['email']); ?>" required>
                 </label>
 
                 <button type="submit">Guardar Cambios</button>
             </form>
 
             <footer>
-                <a href="index.php" role="button" class="secondary outline">Volver a la lista de estudiantes</a>
+                <a href="index.php" role="button" class="secondary outline" style="width: 100%; text-align: center;">Volver a la lista</a>
             </footer>
         </article>
     </main>
