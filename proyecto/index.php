@@ -21,6 +21,7 @@ if (!empty($busqueda)) {
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Estudiantes</title>
 
     <link rel="stylesheet"href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
@@ -28,21 +29,29 @@ if (!empty($busqueda)) {
 
 </head>
 <body>
+    <!--encapsulado-->
+    <main class="container">
+    <header style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+
     <h1>Estudiantes</h1>
 
     <p><a href="crear.php">Agregar nuevo estudiante</a></p>
 
     <!-- FORMULARIO DE BÚSQUEDA -->
     <form action="index.php" method="GET">
+    <fieldset role="group">
         <input type="text" name="buscar" placeholder="Buscar por nombre, apellido o email..." value="<?= htmlspecialchars($busqueda) ?>">
         <button type="submit">Buscar</button>
         <?php if (!empty($busqueda)): ?>
             <a href="index.php">Limpiar búsqueda</a>
         <?php endif; ?>
+    </fieldset>
     </form>
-    <br>
 
-    <table border="1">
+   <!--tabla con estilo picocss-->
+
+   <div class="overflow-auto">
+    <table>
         <thead>
             <tr>
                 <th>Nombre</th>
@@ -67,11 +76,15 @@ if (!empty($busqueda)) {
             <?php endwhile; ?>
         <?php else: ?>
             <tr>
-                <td colspan="4">No se encontraron estudiantes.</td>
+                <td colspan="4" style="text-align:center;">No se encontraron estudiantes.</td>
             </tr>
         <?php endif; ?>
         </tbody>
     </table>
-    <p>Total: <?= $res->num_rows ?> estudiantes</p>
+  </div>
+  <footer>
+    <small><strong>Total:</strong>< ?= $res->num_rows ?> estudiantes</small>
+  </footer>
+ </main>
 </body>
 </html>

@@ -31,19 +31,43 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agregar Estudiante</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
 </head>
 <body>
-    <?php if ($mensaje): ?>
-        <p><strong><?= htmlspecialchars($mensaje) ?></strong></p>
-    <?php endif; ?>
+    <main class="container">
+        <article>
+            <header>
+                <h2>Agregar Nuevo Estudiante</h2>
+            </header>
 
-    <form action="crear.php" method="POST">
-        <input type="text" name="nombre" placeholder="Nombre">
-        <input type="text" name="apellido" placeholder="Apellido">
-        <input type="email" name="email" placeholder="Email">
-        <button type="submit">Guardar</button>
-    </form>
-    <a href="index.php"> Volver a estudiantes</a>
+            <?php if ($mensaje): ?>
+                <ins><strong><?= htmlspecialchars($mensaje) ?></strong></ins>
+                <br><br>
+            <?php endif; ?>
+
+            <form action="crear.php" method="POST">
+                <label for="nombre">Nombre:
+                    <input type="text" id="nombre" name="nombre" placeholder="Nombre" required>
+                </label>
+
+                <label for="apellido">Apellido:
+                    <input type="text" id="apellido" name="apellido" placeholder="Apellido" required>
+                </label>
+
+                <label for="email">Correo Electrónico:
+                    <input type="email" id="email" name="email" placeholder="Email" required>
+                </label>
+
+                <button type="submit">Guardar Estudiante</button>
+            </form>
+
+            <footer>
+                <a href="index.php" role="button" class="secondary outline">Volver a estudiantes</a>
+            </footer>
+        </article>
+    </main>
 </body>
 </html>

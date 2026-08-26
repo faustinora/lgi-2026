@@ -53,39 +53,46 @@ if (!$estudiante) {
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Estudiante</title>
 
     <link rel="stylesheet"href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
 
 </head>
 <body>
-    <h1>Editar Estudiante</h1>
 
-    <?php if ($mensaje): ?>
-        <p><strong><?= htmlspecialchars($mensaje) ?></strong></p>
-    <?php endif; ?>
+<main class="container">
+        <article>
+            <header>
+                <h2>Editar Estudiante</h2>
+            </header>
 
-    <!-- Se pasa el ID en la URL del action para mantenerlo durante el envio -->
-    <form action="editar.php?id=<?= $id ?>" method="POST">
-        <div>
-            <label>Nombre:</label><br>
-            <input type="text" name="nombre" value="<?= htmlspecialchars($estudiante['nombre']) ?>">
-        </div>
-        <br>
-        <div>
-            <label>Apellido:</label><br>
-            <input type="text" name="apellido" value="<?= htmlspecialchars($estudiante['apellido']) ?>">
-        </div>
-        <br>
-        <div>
-            <label>Email:</label><br>
-            <input type="email" name="email" value="<?= htmlspecialchars($estudiante['email']) ?>">
-        </div>
-        <br>
-        <button type="submit">Guardar Cambios</button>
-    </form>
+            <?php if ($mensaje): ?>
+                <ins><strong><?= htmlspecialchars($mensaje) ?></strong></ins>
+                <br><br>
+            <?php endif; ?>
 
-    <br>
-    <a href="index.php">⬅ Volver a la lista de estudiantes</a>
+            <!-- Formulario adaptado a la sintaxis limpia de PicoCSS -->
+            <form action="editar.php?id=<?= $id ?>" method="POST">
+                <label for="nombre">Nombre:
+                    <input type="text" id="nombre" name="nombre" value="<?= htmlspecialchars($estudiante['nombre']) ?>" required>
+                </label>
+
+                <label for="apellido">Apellido:
+                    <input type="text" id="apellido" name="apellido" value="<?= htmlspecialchars($estudiante['apellido']) ?>" required>
+                </label>
+
+                <label for="email">Email:
+                    <input type="email" id="email" name="email" value="<?= htmlspecialchars($estudiante['email']) ?>" required>
+                </label>
+
+                <button type="submit">Guardar Cambios</button>
+            </form>
+
+            <footer>
+                <a href="index.php" role="button" class="secondary outline">Volver a la lista de estudiantes</a>
+            </footer>
+        </article>
+    </main>
 </body>
 </html>
