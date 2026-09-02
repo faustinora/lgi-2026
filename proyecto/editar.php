@@ -51,6 +51,13 @@ if (!$estudiante) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Estudiante</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+    
+    <!-- MISMO COLOR DE FONDO QUE EN INDEX -->
+    <style>
+        body {
+            background-color: #04464b;
+        }
+    </style>
 </head>
 <body>
     <main class="container" style="max-width: 600px; padding-top: 2rem;">
