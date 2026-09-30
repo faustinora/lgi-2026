@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript Formulario</title>
+    
+    <!-- Carga del estilo CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    
+    <style>
+        body {
+            background-color: #f4f6f8;
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+        }
+        
+        main.container {
+            background-color: #ffffff;
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            max-width: 800px; /* Ancho máximo para mantener la interfaz legible */
+            margin: 0 auto;
+        }
+
+        /* Disposición para los botones del formulario */
+        .contenedor-botones {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .contenedor-botones button {
+            width: auto;
+            margin-bottom: 0;
+        }
+
+        /* Estados de aprobación */
+        .aprobado { 
+            color: #2e7d32 !important; 
+            font-weight: bold; 
+        }
+    
+        .desaprobado { 
+            color: #c62828 !important; 
+            font-weight: bold; 
+        }
+
+        .error { 
+            color: #c62828; 
+            font-weight: bold; 
+            margin-bottom: 1rem; 
+        }
+
+        /* Botón de eliminar individual */
+        .btn-delete {
+            background-color: #c62828;
+            border-color: #c62828;
+            color: white;
+            padding: 4px 10px;
+            font-size: 0.85rem;
+            width: auto;
+            cursor: pointer;
+        }
+
+        .btn-delete:hover {
+            background-color: #b71c1c;
+        }
+    </style>
+</head>
+<body>
+
+ <main class="container">
+
+    <h1>Gestión de Estudiantes</h1>
+
+    <!-- Formulario en columna vertical única -->
+    <form id="formularioEstudiante">
+        <label for="nombre">
+            Nombre:
+            <input type="text" id="nombre" placeholder="Ej: Lucía" required>
+        </label>
+
+        <label for="notas">
+            Notas:
+            <input type="text" id="notas" placeholder="Ej: 8, 9, 7.5" required>
+        </label>
+
+        <label for="notaMinima">
+            Nota mínima para aprobar:
+            <input type="number" id="notaMinima" value="6" min="0" max="10" step="0.5">
+        </label>
+
+        <div class="contenedor-botones">
+            <button type="submit">Agregar Estudiante</button>
+            <button type="button" id="btnLimpiar" class="secondary">Limpiar Lista Completa</button>
+        </div>
+    </form>
+
+    <div id="mensajeError" class="error"></div>
+
+    <h2>Resultados</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Notas</th>
+                <th>Promedio</th>
+                <th>Calificación</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody id="tablaEstudiantes">
+            <!-- Filas dinámicas -->
+        </tbody>
+    </table>
+
+    <article id="resumenGrupo">
+        <h3>Resumen del Grupo</h3>
+        <p>Total estudiantes: 0 | Aprobados: 0 | Desaprobados: 0 | Promedio General: 0.00</p>
+    </article>
+
+ </main>
+
+    <script src="js/ejercicio2.js" defer></script>
+</body>
+</html>
