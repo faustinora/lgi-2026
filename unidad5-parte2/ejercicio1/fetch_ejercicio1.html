@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1 · Fetch Básico</title>
+    
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    
+    <style>
+        body {
+            background-color: #f4f6f8;
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+        }
+
+        main.container {
+            background-color: #ffffff;
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .header-acciones {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .header-acciones h1 {
+            margin-bottom: 0;
+        }
+
+        #btnRecargar {
+            width: auto;
+            margin-bottom: 0;
+        }
+
+        /* Indicador de carga */
+        #indicadorCarga {
+            text-align: center;
+            padding: 1.5rem;
+            font-weight: bold;
+            color: #0288d1;
+        }
+
+        .error {
+            color: #c62828;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+
+    <main class="container">
+        <div class="header-acciones">
+            <h1>Lista de Usuarios</h1>
+            <button id="btnRecargar">Recargar</button>
+        </div>
+
+    
+        <div id="indicadorCarga" style="display: none;">
+            <p aria-busy="true">Cargando usuarios, por favor espere...</p>
+        </div>
+
+
+        <div id="mensajeError" class="error"></div>
+
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Email</th>
+                    <th>Ciudad</th>
+                </tr>
+            </thead>
+            <tbody id="tablaUsuarios">
+            
+            </tbody>
+        </table>
+    </main>
+
+    <script src="js/ejercicio1.js"></script>
+</body>
+</html>

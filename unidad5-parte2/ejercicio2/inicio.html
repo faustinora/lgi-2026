@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 2 - JS + PHP-</title>
+    
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+    
+    <style>
+        body {
+            background-color: #04464b;
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+        }
+
+        main.container {
+            max-width: 800px;
+        }
+
+        .titulo-principal {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .mensaje-alerta {
+            margin-bottom: 1rem;
+            padding: 0.75rem 1rem;
+            border-radius: 6px;
+            font-weight: bold;
+        }
+
+        .mensaje-error {
+            background-color: #f8d7da;
+            color: #842029;
+            border: 1px solid #f5c2c7;
+        }
+
+        .mensaje-exito {
+            background-color: #d1e7dd;
+            color: #0f5132;
+            border: 1px solid #badbcc;
+        }
+
+        table.tabla-estudiantes {
+            border-collapse: collapse;
+            width: 100%;
+            border: 1px solid #cbd5e1;
+        }
+
+        table.tabla-estudiantes th, 
+        table.tabla-estudiantes td {
+            border: 1px solid #cbd5e1;
+            padding: 0.6rem 0.8rem;
+        }
+
+        table.tabla-estudiantes thead th {
+            background-color: #1e293b;
+            color: #ffffff;
+        }
+
+        table.tabla-estudiantes tbody tr {
+            background-color: #ffffff;
+        }
+
+        table.tabla-estudiantes tbody tr:nth-child(even) {
+            background-color: #f8fafc;
+        }
+    </style>
+</head>
+<body>
+
+<main class="container">
+    <article>
+        <header>
+            <h1 class="titulo-principal" style="margin-bottom: 0;">Gestión de Estudiantes</h1>
+        </header>
+
+
+        <div id="contenedorMensaje"></div>
+
+        <form id="formularioEstudiante">
+            <div class="grid">
+                <label for="nombre">Nombre
+                    <input type="text" id="nombre" name="nombre" placeholder="Ej. Juan" required>
+                </label>
+
+                <label for="apellido">Apellido
+                    <input type="text" id="apellido" name="apellido" placeholder="Ej. Pérez" required>
+                </label>
+            </div>
+
+            <label for="email">Correo Electrónico
+                <input type="email" id="email" name="email" placeholder="juan@ejemplo.com" required>
+            </label>
+
+            <button type="submit" id="btnGuardar" class="contrast">Guardar Estudiante</button>
+        </form>
+
+        <hr style="margin: 2rem 0;">
+
+
+        <div style="margin-bottom: 1.5rem;">
+            <label for="inputBuscador">
+                 <strong>Buscar:</strong>
+                <input type="search" id="inputBuscador" placeholder="Escriba apellido, nombre o email...">
+            </label>
+        </div>
+
+    
+        <h2>Lista de Estudiantes</h2>
+        <div class="overflow-auto">
+            <table class="tabla-estudiantes">
+                <thead>
+                    <tr>
+                        <th>Apellido</th>
+                        <th>Nombre</th>
+                        <th>Email</th>
+                    </tr>
+                </thead>
+                <tbody id="tablaEstudiantes">
+
+                </tbody>
+            </table>
+        </div>
+
+        <footer>
+            <small id="totalEstudiantes"><strong>Total:</strong> 0 estudiantes</small>
+        </footer>
+    </article>
+</main>
+
+<script src="js/ejercicio2.js"></script>
+</body>
+</html>

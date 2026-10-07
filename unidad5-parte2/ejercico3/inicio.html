@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 3 · CRUD Gestion Estudiantes</title>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+    
+    <style>
+        body {
+            background-color: #04464b;
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+        }
+
+        main.container {
+            max-width: 900px;
+        }
+
+        .titulo-principal {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .mensaje-alerta {
+            margin-bottom: 1rem;
+            padding: 0.75rem 1rem;
+            border-radius: 6px;
+            font-weight: bold;
+        }
+
+        .mensaje-error {
+            background-color: #f8d7da;
+            color: #842029;
+            border: 1px solid #f5c2c7;
+        }
+
+        .mensaje-exito {
+            background-color: #d1e7dd;
+            color: #0f5132;
+            border: 1px solid #badbcc;
+        }
+
+        table.tabla-estudiantes {
+            border-collapse: collapse;
+            width: 100%;
+            border: 1px solid #cbd5e1;
+        }
+
+        table.tabla-estudiantes th, 
+        table.tabla-estudiantes td {
+            border: 1px solid #cbd5e1;
+            padding: 0.6rem 0.8rem;
+        }
+
+        table.tabla-estudiantes thead th {
+            background-color: #1e293b;
+            color: #ffffff;
+        }
+
+        table.tabla-estudiantes tbody tr {
+            background-color: #ffffff;
+        }
+
+        table.tabla-estudiantes tbody tr:nth-child(even) {
+            background-color: #f8fafc;
+        }
+
+        .col-acciones {
+            width: 1%;
+            white-space: nowrap;
+            text-align: center !important;
+        }
+
+        .btn-accion {
+            padding: 0.25rem 0.5rem;
+            font-size: 0.85rem;
+            margin-right: 0.25rem;
+        }
+    </style>
+</head>
+<body>
+
+<main class="container">
+    <article>
+        <header>
+            <h1 class="titulo-principal" style="margin-bottom: 0;">CRUD Gestión Estudiantes</h1>
+        </header>
+
+        <!-- Mensajes de Feedback -->
+        <div id="contenedorMensaje"></div>
+
+    
+        <form id="formularioCrear">
+            <div class="grid">
+                <label for="nombre">Nombre
+                    <input type="text" id="nombre" placeholder="Ej. Juan" required>
+                </label>
+
+                <label for="apellido">Apellido
+                    <input type="text" id="apellido" placeholder="Ej. Pérez" required>
+                </label>
+            </div>
+
+            <label for="email">Correo Electrónico
+                <input type="email" id="email" placeholder="juan@ejemplo.com" required>
+            </label>
+
+            <button type="submit" id="btnGuardar" class="contrast">Guardar Estudiante</button>
+        </form>
+
+        <hr style="margin: 2rem 0;">
+
+        <!-- Buscador -->
+        <div style="margin-bottom: 1.5rem;">
+            <label for="inputBuscador">
+                <strong>Buscador en tiempo real:</strong>
+                <input type="search" id="inputBuscador" placeholder="Escriba apellido, nombre o email...">
+            </label>
+        </div>
+
+        <!-- Tabla -->
+        <h2>Lista de Estudiantes</h2>
+        <div class="overflow-auto">
+            <table class="tabla-estudiantes">
+                <thead>
+                    <tr>
+                        <th>Apellido</th>
+                        <th>Nombre</th>
+                        <th>Email</th>
+                        <th class="col-acciones">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="tablaEstudiantes">
+                    <!-- Filas dinámicas -->
+                </tbody>
+            </table>
+        </div>
+
+        <footer>
+            <small id="totalEstudiantes"><strong>Total:</strong> 0 estudiantes</small>
+        </footer>
+    </article>
+</main>
+
+<!-- Modal de Edición (Dialog Nativo de Pico.css) -->
+<dialog id="modalEditar">
+    <article style="max-width: 500px;">
+        <header>
+            <button aria-label="Cerrar" rel="prev" onclick="cerrarModal()"></button>
+            <h3>Editar</h3>
+        </header>
+
+        <form id="formularioEditar">
+            <input type="hidden" id="editId">
+
+            <div class="grid">
+                <label for="editNombre">Nombre
+                    <input type="text" id="editNombre" required>
+                </label>
+
+                <label for="editApellido">Apellido
+                    <input type="text" id="editApellido" required>
+                </label>
+            </div>
+
+            <label for="editEmail">Email
+                <input type="email" id="editEmail" required>
+            </label>
+
+            <footer>
+                <button type="button" class="secondary outline" onclick="cerrarModal()">Cancelar</button>
+                <button type="submit" id="btnActualizar">Guardar</button>
+            </footer>
+        </form>
+    </article>
+</dialog>
+
+<script src="js/ejercicio3.js"></script>
+</body>
+</html>
