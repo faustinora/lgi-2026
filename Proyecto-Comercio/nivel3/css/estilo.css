@@ -1,0 +1,322 @@
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+body {
+    background-color: #04464b; /* Manteniendo tu tono de fondo habitual */
+    color: #334155;
+    padding: 2rem 1rem;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+
+main.container {
+    background-color: #ffffff;
+    width: 100%;
+    max-width: 850px;
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.titulo-principal {
+    text-align: center;
+    color: #0f172a;
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+form label {
+    display: block;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #475569;
+    margin-bottom: 0.8rem;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="search"] {
+    width: 100%;
+    padding: 0.65rem 0.85rem;
+    margin-top: 0.3rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    outline: none;
+}
+
+input:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+button[type="submit"],
+button.btn-accion {
+    background-color: #0f172a;
+    color: #ffffff;
+    border: none;
+    padding: 0.65rem 1.2rem;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #1e293b;
+}
+
+.tarjeta-inventario {
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+    padding: 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.tarjeta-inventario small {
+    color: #64748b;
+    font-size: 0.94rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.tarjeta-inventario h3 {
+    margin-top: 0.4rem;
+    color: #2e7d32;
+    font-size: 1.5rem;
+}
+
+.overflow-auto {
+    overflow-x: auto;
+    margin-top: 0.1rem;
+}
+
+table.tabla-productos {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 0.5rem;
+    font-size: 0.95rem;
+}
+
+table.tabla-productos th, 
+table.tabla-productos td {
+    padding: 0.75rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+table.tabla-productos thead th {
+    background-color: #1e293b;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+table.tabla-productos tbody tr:hover {
+    background-color: #f1f5f9;
+}
+
+.col-acciones {
+    text-align: center !important;
+    white-space: nowrap;
+}
+
+.btn-accion {
+    padding: 0.35rem 0.65rem;
+    font-size: 0.8rem;
+    margin-right: 0.3rem;
+    border-radius: 4px;
+}
+
+.btn-accion.outline {
+    background-color: transparent;
+    color: #c62828;
+    border: 1px solid #c62828;
+}
+
+.btn-accion.outline:hover {
+    background-color: #c62828;
+    color: #ffffff;
+}
+
+footer {
+    margin-top: 1rem;
+    color: #64748b;
+}
+
+dialog {
+    border: none;
+    border-radius: 12px;
+    padding: 0;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+    margin:auto;
+}
+
+dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(2px);
+}
+
+dialog article {
+    padding: 2rem;
+    background-color: #ffffff;
+    border-radius: 12px;
+}
+
+dialog header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.2rem;
+    position: relative;
+}
+
+dialog header h3 {
+    margin: 0 auto;
+    color: #0f172a;
+    font-size: 1.3rem;
+}
+
+dialog .btn-cerrar-modal {
+    position: absolute;
+    right: 0;
+    background: transparent;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: #64748b;
+}
+
+dialog footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+}
+
+button.secondary.outline {
+    background-color: transparent;
+    color: #64748b;
+    border: 1px solid #cbd5e1;
+}
+
+button.secondary.outline:hover {
+    background-color: #f1f5f9;
+}
+
+#toastContainer {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.toast-notificacion {
+    padding: 12px 20px;
+    border-radius: 8px;
+    color: #ffffff;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    opacity: 0;
+    transform: translateY(20px);
+    min-width: 250px;
+}
+
+.toast-notificacion.exito {
+    background-color: #2e7d32;
+}
+
+.toast-notificacion.error {
+    background-color: #c62828;
+}
+
+.toast-notificacion.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+h3{
+    margin-top: 2.5rem;
+    margin-bottom: 0.8rem;
+    color: #0f172a;
+    font-size: 1.3rem;
+}
+
+.tarjeta-inventario h3{
+    margin-top: 0.4rem;
+    color: #2e7d32;
+    font-size: 1.6rem;
+}
+
+h3.titulo-lista {
+    margin-top: 1.8rem !important;
+    margin-bottom: 0rem !important;
+    color: #0f172a;
+    font-size: 1.2rem;
+}
+
+.contenedor-btn-venta {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 1rem !important;
+    margin-bottom: 2rem !important;
+    width: 100% !important;
+}
+
+.contenedor-btn-venta button {
+    flex: 1 !important;
+    min-height: 55px !important;
+    padding: 12px 20px !important;
+    font-size: 1.2rem !important;
+    font-weight: 700 !important;
+    border-radius: 8px !important;
+    cursor: pointer !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    box-sizing: border-box !important;
+}
+
+#btnAbrirVenta {
+    background-color: #0284c7 !important;
+    color: #ffffff !important;
+    border: none !important;
+}
+
+#btnAbrirVenta:hover {
+    background-color: #0369a1 !important;
+}
+
+#btnVerVentas {
+    background-color: #ffffff !important;
+    color: #0f172a !important;
+    border: 2px solid #cbd5e1 !important;
+}
+
+#btnVerVentas:hover {
+    background-color: #f8fafc !important;
+    border-color: #94a3b8 !important;
+}

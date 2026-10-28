@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio Nivel 3</title>
+    
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+
+<main class="container">
+    <article class="tarjeta-principal-contenido">
+        <header class="header-principal">
+            <h2 class="titulo-principal">Productos</h2>
+        </header>
+
+        <div class="contenedor-btn-venta">
+            <button type="button" id="btnAbrirVenta" class="btn-guardar-principal" onclick="abrirModalVenta()">Vender</button>
+            <button type="button" id="btnVerVentas" class="btn-secundario-outline" onclick="toggleSeccionVentas()">Historial de Ventas</button>
+        </div>
+
+        <div id="seccionHistorialVentas" style="display: none; margin-bottom: 2rem;">
+            <h4>Historial de Ventas</h4>
+            <div class="overflow-auto">
+                <table class="tabla-productos">
+                    <thead>
+                        <tr>
+                            <th>ID Venta</th>
+                            <th>Producto</th>
+                            <th>Cant. Vendida</th>
+                            <th>Total Cobrado</th>
+                            <th>Fecha</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tablaVentas">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <form id="formularioCrear">
+            <label for="codigo">Código
+                <input type="text" id="codigo" placeholder="Ej. 0001" required>
+            </label>
+
+            <label for="nombre">Nombre
+                <input type="text" id="nombre" placeholder="Ej. Azúcar" required>
+            </label>
+
+            <label for="precio">Precio
+                <input type="number" step="0.01" id="precio" placeholder="Ej. 19.99" required>
+            </label>
+
+            <label for="stock">Stock
+                <input type="number" id="stock" placeholder="Ej. 10" required>
+            </label>
+
+            <button type="submit" id="btnGuardar" class="btn-guardar-principal">Guardar</button>
+        </form>
+
+        <div class="contenedor-inventario-wrapper">
+            <article class="tarjeta-inventario">
+                <small>Total Inventario</small>
+                <h3 id="spanTotalInventario">$0.00</h3>
+            </article>
+        </div>
+
+        <div class="buscador-wrapper">
+            <label for="inputBuscador">
+                <strong>Buscar:</strong>
+                <input type="search" id="inputBuscador" placeholder="Escriba código o nombre...">
+            </label>
+        </div>
+
+        <h3 class="titulo-lista">Lista</h3>
+        <div class="overflow-auto">
+            <table class="tabla-productos">
+                <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Nombre</th>
+                        <th>Precio</th>
+                        <th>Stock</th>
+                        <th class="col-acciones">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="tablaProductos">
+                </tbody>
+            </table>
+        </div>
+
+        <footer>
+            <small id="totalProductos"><strong>Total:</strong> 0 productos</small>
+        </footer>
+    </article>
+</main>
+
+<dialog id="modalEditar">
+    <article class="modal-articulo">
+        <header class="modal-header">
+            <h3>Editar</h3>
+            <button type="button" class="btn-cerrar-modal" onclick="cerrarModal()">✕</button>
+        </header>
+
+        <form id="formularioEditar">
+            <input type="hidden" id="editId">
+
+            <label for="editCodigo">Código
+                <input type="text" id="editCodigo" required>
+            </label>
+
+            <label for="editNombre">Nombre
+                <input type="text" id="editNombre" required>
+            </label>
+
+            <label for="editPrecio">Precio
+                <input type="number" step="0.01" id="editPrecio" required>
+            </label>
+
+            <label for="editStock">Stock
+                <input type="number" id="editStock" required>
+            </label>
+
+            <footer>
+                <button type="button" class="btn-secundario-outline" onclick="cerrarModal()">Cancelar</button>
+                <button type="submit" id="btnActualizar">Guardar</button>
+            </footer>
+        </form>
+    </article>
+</dialog>
+
+<dialog id="modalVenta">
+    <article class="modal-articulo">
+        <header class="modal-header">
+            <h3>Registrar Venta</h3>
+            <button type="button" class="btn-cerrar-modal" onclick="cerrarModalVenta()">✕</button>
+        </header>
+
+        <form id="formularioVenta">
+            <label for="selectProductoVenta">Seleccionar Producto
+                <select id="selectProductoVenta" required style="width: 100%; padding: 0.65rem 0.85rem; margin-top: 0.3rem; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 0.95rem;">
+                </select>
+            </label>
+
+            <label for="cantidadVenta">Cantidad a vender
+                <input type="number" id="cantidadVenta" min="1" value="1" required>
+            </label>
+
+            <div style="margin-top: 1rem; background: #f8fafc; padding: 0.8rem; border-radius: 6px; border: 1px solid #e2e8f0;">
+                <small>Subtotal: <strong id="lblSubtotalVenta" style="color: #2e7d32; font-size: 1.1rem;">$0.00</strong></small>
+            </div>
+
+            <footer style="margin-top: 1.5rem;">
+                <button type="button" class="btn-secundario-outline" onclick="cerrarModalVenta()">Cancelar</button>
+                <button type="submit" id="btnConfirmarVenta" style="background-color: #16a34a; color: white;">Vender</button>
+            </footer>
+        </form>
+    </article>
+</dialog>
+
+<div id="toastContainer"></div>
+
+<script src="js/ejercicio3.js"></script>
+</body>
+</html>
